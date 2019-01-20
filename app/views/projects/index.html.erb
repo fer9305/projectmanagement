@@ -1,1 +1,23 @@
 <h2>This is Projects index</h2>
+
+<%= link_to 'New project', new_project_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Start date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.start_date.strftime('%m/%d/%Y') %></td>
+        <td><%= link_to 'Show', project, class: 'btn btn-default' %></td>
+        <td><%= link_to 'Edit', edit_project_path(project), class: 'btn btn-default' %></td>
+        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
