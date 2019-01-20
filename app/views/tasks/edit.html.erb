@@ -10,6 +10,16 @@
   <%= f.label :done %>
   <%= f.check_box :done %>
 
+  <h3>Users</h3>
+  <div>
+    <%= f.fields_for :user_tasks do |user| %>
+      <%= render 'user_task_fields', :f => user %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'add attachment', f, :user_tasks %>
+    </div>
+  </div>
+
   <h3>Attachments</h3>
   <div>
     <%= f.fields_for :attachments do |attachment| %>

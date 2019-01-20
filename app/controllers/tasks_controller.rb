@@ -10,6 +10,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:project_id])
     if @task.update(task_params)
+      # @task.user_tasks.create(users_params)
       redirect_to project_task_path(@task), notice: 'Project was successfully updated.'
     else
       redirect_to edit_project_task_path(@task), error: 'There was an error updating project'
@@ -25,6 +26,8 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :deadline, :done, attachments_attributes: [:id, :file, :_destroy])
+    params.require(:task).permit(:name, :deadline, :done,
+                                 attachments_attributes: [:id, :file, :_destroy],
+                                 user_tasks_attributes: [:id, :user_id, :_destroy])
   end
 end
