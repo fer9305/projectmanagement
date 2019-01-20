@@ -1,12 +1,25 @@
 <h2> New Project </h2>
 
 <%= form_for @project do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
 
-  <%= f.label :start_date %>
-  <%= f.date_field :start_date %>
+  <div class="field">
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date %>
+  </div>
 
+  <h3>Tasks</h3>
+  <div id='tasks'>
+    <%= f.fields_for :tasks do |task| %>
+      <%= render 'task_fields', :f => task %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'add task', f, :tasks %>
+    </div>
+  </div>
   <%= f.submit :save %>
 <% end %>
 

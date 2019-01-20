@@ -2,4 +2,26 @@
 
 <h3>Start date: <%= @project.start_date.strftime('%m/%d/%Y') %></h3>
 
+<h3>Tasks</h3>
+
+<div id='tasks'>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <% @project.tasks.each do |task| %>
+        <td><%= link_to task.name, project_task_path(task) %></td>
+        <td><%= link_to 'Edit', edit_project_task_path(task) %></td>
+        <td><%= link_to 'Destroy', project_task_path(task), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      <% end %>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
 <%= link_to 'Back', projects_path %>

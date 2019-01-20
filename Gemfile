@@ -39,6 +39,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Devise is a flexible authentication solution for Rails based on Warden.
 gem 'devise'
 
+# Cocoon makes it easier to handle nested forms.
+gem 'cocoon'
+
+# Add jQuery
+gem 'jquery-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

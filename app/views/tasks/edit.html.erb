@@ -1,0 +1,15 @@
+<h2> Edit Task </h2>
+
+<%= form_for @task, url: project_task_path do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :deadline %>
+  <%= f.date_field :deadline %>
+
+  <%= f.label :done %>
+  <%= f.check_box :done %>
+
+  <%= f.submit 'Save' %>
+
+<% end %>
