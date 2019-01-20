@@ -1,6 +1,6 @@
 <h2> Edit Task </h2>
 
-<%= form_for @task, url: project_task_path do |f| %>
+<%= form_for @task, url: project_task_path, html: { multipart: true } do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 
@@ -10,6 +10,18 @@
   <%= f.label :done %>
   <%= f.check_box :done %>
 
+  <h3>Attachments</h3>
+  <div>
+    <%= f.fields_for :attachments do |attachment| %>
+      <%= render 'attachment_fields', :f => attachment %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'add attachment', f, :attachments %>
+    </div>
+  </div>
+
   <%= f.submit 'Save' %>
 
 <% end %>
+
+<%= link_to 'Back', project_path(@task.project) %>

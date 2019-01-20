@@ -4,4 +4,11 @@
 
 <h3>Done: <%= @task.done %></h3>
 
+<h3>Attachments</h3>
+<div>
+  <% @task.attachments.each do |att| %>
+    <%= image_tag att.file.url(:thumb) %>
+  <% end %>
+</div>
+
 <%= link_to 'Back', project_path(@task.project) %>

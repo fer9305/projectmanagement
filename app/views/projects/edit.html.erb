@@ -8,7 +8,7 @@
   <%= f.date_field :start_date %>
 
   <h3>Tasks</h3>
-  <div id='tasks'>
+  <div>
     <%= f.fields_for :tasks do |task| %>
       <%= render 'task_fields', :f => task %>
     <% end %>

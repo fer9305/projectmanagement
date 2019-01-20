@@ -1,0 +1,8 @@
+<div class='nested-fields'>
+  <div class="field">
+    <%= f.label :user %>
+    <%= f.select :user_task_ids, User.all.collect { |p| [ p.email, p.id ] }, include_blank: true %>
+
+  </div>
+  <%= link_to_remove_association "remove user", f %>
+</div>

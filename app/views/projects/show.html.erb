@@ -12,13 +12,13 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <% @project.tasks.each do |task| %>
+    <% @project.tasks.each do |task| %>
+      <tr>
         <td><%= link_to task.name, project_task_path(task) %></td>
         <td><%= link_to 'Edit', edit_project_task_path(task) %></td>
         <td><%= link_to 'Destroy', project_task_path(task), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-      <% end %>
-    </tr>
+      </tr>
+    <% end %>
     </tbody>
   </table>
 
