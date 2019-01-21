@@ -1,16 +1,8 @@
 class TasksController < ApplicationController
-  def show
-    @task = Task.find(params[:project_id])
-  end
-
-  def edit
-    @task = Task.find(params[:project_id])
-  end
+  before_action :set_task, only: %w[show edit update destroy]
 
   def update
-    @task = Task.find(params[:project_id])
     if @task.update(task_params)
-      # @task.user_tasks.create(users_params)
       redirect_to project_task_path(@task), notice: 'Project was successfully updated.'
     else
       redirect_to edit_project_task_path(@task), error: 'There was an error updating project'
@@ -18,9 +10,14 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(params[:project_id])
     @task.destroy
     redirect_to project_path(@task.project), notice: 'Project was successfully destroyed.'
+  end
+
+  private
+
+  def set_task
+    @task = Task.find(params[:project_id])
   end
 
   private
