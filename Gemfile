@@ -48,6 +48,14 @@ gem 'jquery-rails'
 # Paperclip is intended as an easy file attachment library for ActiveRecord.
 gem 'paperclip', '~> 6.0.0'
 
+# MailCatcher runs a super simple SMTP server which catches any message sent to it to display in a web interface.
+gem 'mailcatcher'
+
+# Simple, efficient background processing for Ruby
+gem 'sidekiq'
+
+gem 'devise-async'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
